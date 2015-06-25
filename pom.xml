@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+	<groupId>org.lucee</groupId>
+	<artifactId>commons-codec</artifactId>
+	<version>1.10.0</version><!-- version need to follow this pattern <number>.<number>.<number>.<string> -->
+  <name>Apache Commons Codec</name>
+  <packaging>bundle</packaging>
+
+  <description>OSGi version of ${project.name}</description>
+  <url>http://maven.lucee.org/commons-codec/</url>
+
+  <!-- same license as the original jar -->
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+      <comments>A business-friendly OSS license</comments>
+    </license>
+  </licenses>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>1.2.0</version>
+        <configuration>
+          <unpackBundle>true</unpackBundle>
+          <instructions>
+            <Bundle-Name>${project.artifactId}</Bundle-Name>
+            <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+            <Bundle-Description>OSGI version of jar ${project.name}</Bundle-Description>
+            <Export-Package>*</Export-Package>
+          </instructions>
+        </configuration>
+        <extensions>true</extensions>
+      </plugin>
+    </plugins>
+  </build>
+  
+  <!-- the jar we are rewiting -->
+  <dependencies>
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.10</version>
+    </dependency>
+  </dependencies>
+</project>
